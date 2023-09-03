@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class Matrix {
 
 
-	public static void boasvindas() {
-		System.out.println("Sejam-Bem vindos à minha calculadora de matrizes!");	
-		System.out.println("O que você deseja fazer?");
-		System.out.println("1- Soma de Matrizes");
-		System.out.println("2- Subtração de Matrizes");
-		System.out.println("3- Produto de Matrizes");
+	public static void welcome() {
+		System.out.println("Welcome to my matrix calculator!");	
+		System.out.println("What would you like to do?");
+		System.out.println("1- Matrix Sum");
+		System.out.println("2- Matrix Subtraction");
+		System.out.println("3- Matrix Multiplication");
 	}
 	
 	
 	
-	public static void printarmatriz(int [][] matriz){
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[i].length; j++) {
-				System.out.print(matriz[i][j] + " ");
+	public static void printmatrix(int [][] matrix){
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				System.out.print(matrix[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -27,192 +27,193 @@ public class Matrix {
 	
 	
 	
-	public static int[][] retornarmatriz() {
+	public static int[][] returnmatrix() {
 		Scanner scanner = new Scanner(System.in);
 		
-		int linhas;
-		int colunas;
+		int rows;
+		int columns;
 		
 		do {
-			linhas = scanner.nextInt();
-		if(linhas <=0) {
-			System.out.println("O número de linhas não pode ser menor ou igual a zero :'(");
+			rows = scanner.nextInt();
+		if(rows <=0) {
+			System.out.println("The number of rows cannot be less than or equal to zero :'(");
 		}
 		
-		}while(linhas <=0);
+		}while(rows <=0);
 		
-		System.out.println("Digite a quantidade de colunas para sua matriz :D");
+		System.out.println("Enter the number of columns for your matrix :D");
 		do {
-			colunas = scanner.nextInt();
-		if(colunas <=0) {
-			System.out.println("O número de linhas não pode ser menor ou igual a zero :'(");
+			columns = scanner.nextInt();
+		if(columns <=0) {
+			System.out.println("The number of rows cannot be less than or equal to zero :'(");
 		}
 		
-		}while(colunas <=0);
+		}while(columns <=0);
 		
 		
-		int[][] matriz = new int [linhas][colunas];
+		int[][] matrix = new int [rows][columns];
 		
-		for (int i = 0; i < linhas; i++) {
-			for (int j = 0; j < colunas; j++) {
-				System.out.println("Linha " + (i+1)+ " Coluna "+ (j+1));
-				matriz[i][j]= scanner.nextInt();
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				System.out.println("Row " + (i+1)+ " Column "+ (j+1));
+				matrix[i][j]= scanner.nextInt();
 			}
 		}
 		
 		
-		return matriz;
+		return matrix;
 		
 	}
 	
 	
 	
-	public static void soma() {
+	public static void sum() {
 		
-		System.out.println("Lembrando que para realizar uma soma entre matrizes,");
-		System.out.println(",elas precisam ter o mesmo tamanho ;-)");
+		System.out.println("Remembering that to perform a sum between matrices,");
+		System.out.println(",they need to have the same size ;-)");
 		
 		
 		
-		System.out.println("Digite a quantidade de linhas para sua matriz :D");
-		int [][]matrizA = retornarmatriz();
+		System.out.println("Enter how many rows do you want for your matrix :D");
+		int [][]matrixA = returnmatrix();
 		
-		System.out.println("Digite a quantidade de linhas para sua outra matriz :D");
+		System.out.println("Enter the number of rows for your other matrix :D");
 		
-		int [][]matrizB;
+		int [][]matrixB;
 		
 		do {
-		matrizB = retornarmatriz();
-			if(matrizA.length != matrizB.length || matrizA[0].length != matrizB[0].length) {
-				System.out.println("Digite novamente. As matrizes não têm o mesmo tamanho :( ");	
-				System.out.println("Digite a quantidade de linhas para sua outra matriz :D");
+		matrixB = returnmatrix();
+			if(matrixA.length != matrixB.length || matrixA[0].length != matrixB[0].length) {
+				System.out.println("Type it again. The matrices are not the same size :(");	
+				System.out.println("Enter the number of rows for your other matrix :D");
 			}
 		
-		}while(matrizA.length != matrizB.length || matrizA[0].length != matrizB[0].length);
+		}while(matrixA.length != matrixB.length || matrixA[0].length != matrixB[0].length);
 		
 		
-		int [][]resultado = new int[matrizA.length][matrizA[0].length];
+		int [][]result = new int[matrixA.length][matrixA[0].length];
 		
 		
-		for (int i = 0; i < matrizA.length; i++) {
-			for (int j = 0; j < matrizA[i].length; j++) {
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixA[i].length; j++) {
 				
-				resultado[i][j] = matrizA[i][j] + matrizB[i][j];
+				result[i][j] = matrixA[i][j] + matrixB[i][j];
 				
 				
 			}
 		}
 		
-		System.out.println("A soma das duas matriz é: ");
-		printarmatriz(resultado);
+		System.out.println("The sum of the two matrices is: ");
+		printmatrix(result);
 		
 		
 	}
 	
-	public static void subtracao() {
+	public static void subtraction() {
 		
-		System.out.println("Lembrando que para realizar uma subtração entre matrizes,");
-		System.out.println("elas precisam ter o mesmo tamanho ;-)");
+		System.out.println("Remembering that to perform a subtraction between matrices,");
+		System.out.println("they need to have the same size ;-)");
 		
 		
 		
-		System.out.println("Digite a quantidade de linhas para sua matriz :D");
-		int [][]matrizA = retornarmatriz();
+		System.out.println("Enter the number of rows for your matrix :D");
+		int [][]matrixA = returnmatrix();
 		
-		System.out.println("Digite a quantidade de linhas para sua outra matriz :D");
+		System.out.println("Enter the number of rows for your other matrix :D");
 		
-		int [][]matrizB;
+		int [][]matrixB;
 		
 		do {
-		matrizB = retornarmatriz();
-			if(matrizA.length != matrizB.length || matrizA[0].length != matrizB[0].length) {
-				System.out.println("Digite novamente. As matrizes não têm o mesmo tamanho :( ");	
-				System.out.println("Digite a quantidade de linhas para sua outra matriz :D");
+		matrixB = returnmatrix();
+			if(matrixA.length != matrixB.length || matrixA[0].length != matrixB[0].length) {
+				System.out.println("Type it again. The matrices are not the same size :( ");	
+				System.out.println("Enter the number of rows for your other matrix :D\r\n"
+						+ "");
 			}
 		
-		}while(matrizA.length != matrizB.length || matrizA[0].length != matrizB[0].length);
+		}while(matrixA.length != matrixB.length || matrixA[0].length != matrixB[0].length);
 		
 		
-		int [][]resultado = new int[matrizA.length][matrizA[0].length];
+		int [][]result = new int[matrixA.length][matrixA[0].length];
 		
 		
-		for (int i = 0; i < matrizA.length; i++) {
-			for (int j = 0; j < matrizA[i].length; j++) {
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixA[i].length; j++) {
 				
-				resultado[i][j] = (matrizA[i][j] - matrizB[i][j]);
+				result[i][j] = (matrixA[i][j] - matrixB[i][j]);
 				
 				
 			}
 		}
 		
-		System.out.println("A subtração das duas matriz é: ");
-		printarmatriz(resultado);
+		System.out.println("The subtraction of the two matrices is: ");
+		printmatrix(result);
 		
 	}
 	
-	public static void multiplicacao() {
+	public static void multiplication() {
 		
-		System.out.println("Lembrando que para realizar uma multiplicação de matrizes,");
-		System.out.println("o número de colunas da primeira matriz tem que");
-		System.out.println("ser igual o número de linhas da segunda");
+		System.out.println("Remembering that to perform matrix multiplication,");
+		System.out.println("the number of columns of the first matrix must be");
+		System.out.println("equal to the number of rows in the second");
 		
-		System.out.println("Digite a quantidade de linhas para sua primeira matriz");
-		int[][] matrizA = retornarmatriz();
+		System.out.println("Enter the number of rows for your first matrix");
+		int[][] matrixA = returnmatrix();
 		
-		int[][] matrizB;
+		int[][] matrixB;
 		
 		
 		do {
-		System.out.println("Digite a quantitade de linhas da para a segunda matriz");
-			matrizB = retornarmatriz();	
+		System.out.println("Enter the number of rows for the second matrix");
+			matrixB = returnmatrix();	
 			
-			if(matrizA[0].length != matrizB.length) {
-				System.out.println("O número de linhas da segunda matriz");
-				System.out.println("precisa ser igual o número de colunas da primeira");
+			if(matrixA[0].length != matrixB.length) {
+				System.out.println("The number of rows of the second matrix");
+				System.out.println("must be equal to the number of columns in the first");
 			}
 		
-		}while(matrizA[0].length != matrizB.length);
+		}while(matrixA[0].length != matrixB.length);
 		
-		int [][]resultado = new int [matrizA.length][matrizB[0].length];
-		int somatorio;
+		int [][]result = new int [matrixA.length][matrixB[0].length];
+		int summation;
 		
-		for (int i = 0; i < matrizA.length; i++) {
-			for (int j = 0; j < matrizB[0].length; j++) {
-				somatorio = 0;
-					for (int k = 0; k < resultado.length; k++) {
-						somatorio += matrizA[i][k] * matrizB[k][j];
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixB[0].length; j++) {
+				summation = 0;
+					for (int k = 0; k < result.length; k++) {
+						summation += matrixA[i][k] * matrixB[k][j];
 					}
-				resultado[i][j]= somatorio;	
+				result[i][j]= summation;	
 			
 			}
 		}
 		
-		System.out.println("Sua matriz é:");
-		printarmatriz(resultado);
+		System.out.println("Your matrix is:");
+		printmatrix(result);
 	}
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		boasvindas();
-		int opcao;
+		welcome();
+		int option;
 		
 		do{
-		opcao = scanner.nextInt();	
+		option = scanner.nextInt();	
 			
-		if(opcao != 1 && opcao != 2 && opcao !=3) {
+		if(option != 1 && option != 2 && option !=3) {
 			
-			System.out.println("Por favor, digite uma das opções válidas.");
+			System.out.println("Please enter one of the valiable options.");
 			
 		}	
-		}while( opcao != 1 && opcao != 2 && opcao !=3);
+		}while( option != 1 && option != 2 && option !=3);
 		
-		if(opcao==1) {
-			soma();
-		}else if(opcao==2){
-			subtracao();
+		if(option==1) {
+			sum();
+		}else if(option==2){
+			subtraction();
 		}else {
-			multiplicacao();
+			multiplication();
 		}
 			
 		scanner.close();
